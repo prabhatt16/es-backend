@@ -21,10 +21,10 @@ const db = mysql.createPool({
 app.post("/adddata", function (req, res) {
   const body = req.body;
   console.log(body);
-  const sql_insert = `INSERT INTO Data (title, description, image, author, date, country) VALUES ("${body.title}","${body.description}","${body.image}","${body.author}","${body.date}","${body.country}");`;
+  const sql_insert = `INSERT INTO Data (title, description, image, author, date) VALUES ("${body.title}","${body.description}","${body.image}","${body.author}","${body.date}");`;
   db.query(sql_insert, (err) => {
     if (err) {
-      return res.status(400).send("No able to create the user!");
+      return res.status(400).send("No able to create the data!");
     } else {
       res.status(200).send("Data added successfully!");
     }
